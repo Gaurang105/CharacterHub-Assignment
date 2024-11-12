@@ -3,20 +3,21 @@
     <!-- Header -->
     <header class="bg-[#0D253F] text-white">
       <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-        <div class="flex items-center gap-8">
-          <div class="flex items-center gap-2">
-            <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB Logo" class="h-5">
-          </div>
-          
-          <nav class="hidden md:flex gap-8 text-white">
+        <div class="flex items-center gap-4 md:gap-8">
+          <img src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_short-8e7b30f73a4020692ccca9c88bafe5dcb6f8a62a4c6bc55cd9ba82bb2cd95f6c.svg" alt="TMDB Logo" class="h-5 md:h-8">
+
+          <nav class="hidden md:flex gap-4 lg:gap-8 text-white">
             <a href="#" class="hover:text-[#01B4E4]">Movies</a>
             <a href="#" class="hover:text-[#01B4E4]">TV Shows</a>
             <a href="#" class="hover:text-[#01B4E4]">People</a>
             <a href="#" class="hover:text-[#01B4E4]">More</a>
           </nav>
         </div>
-        
-        <div class="flex items-center gap-6">
+
+        <div class="flex items-center gap-2 md:gap-6">
+          <button class="md:hidden text-white hover:text-[#01B4E4]">
+            <Menu class="w-6 h-6" />
+          </button>
           <button class="hidden md:block text-white hover:text-[#01B4E4]">
             <Plus class="w-5 h-5" />
           </button>
@@ -53,20 +54,20 @@
 
       <!-- Content -->
       <div class="relative container mx-auto px-4 py-8">
-        <div class="flex flex-col md:flex-row gap-8">
+        <div class="flex flex-col lg:flex-row gap-8">
           <!-- Poster -->
-          <div class="md:w-1/3 lg:w-1/4">
-            <div class="rounded-lg overflow-hidden shadow-xl">
-              <img 
-                :src="movie.Poster" 
+          <div class="lg:w-1/3 xl:w-1/4">
+            <div class="rounded-lg overflow-hidden shadow-xl max-w-sm mx-auto">
+              <img
+                :src="movie.Poster"
                 :alt="movie.Title"
                 class="w-full"
               />
             </div>
-            <div class="mt-4 bg-white rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300">
-              <img 
+            <div class="mt-4 bg-white rounded-lg p-4 text-center transform hover:scale-105 transition-transform duration-300 max-w-sm mx-auto">
+              <img
                 src="https://www.themoviedb.org/assets/2/v4/logos/v2/blue_square_2-d537fb228cf3ded904ef09b136fe3fec72548ebc1fea3fbbd1ad9e36364db38b.svg"
-                alt="Disney+" 
+                alt="Disney+"
                 class="w-16 mx-auto mb-2"
               />
               <div class="text-lg font-medium mb-2">Now Streaming</div>
@@ -77,7 +78,7 @@
           </div>
 
           <!-- Movie Details -->
-          <div class="md:w-2/3 lg:w-3/4 text-white">
+          <div class="lg:w-2/3 xl:w-3/4 text-white">
             <h1 class="text-4xl font-bold mb-2 text-shadow">
               {{ movie.Title }}
               <span class="text-gray-300">({{ movie.Year }})</span>
@@ -93,7 +94,7 @@
             </div>
 
             <!-- Actions -->
-            <div class="flex items-center gap-6 mb-8">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center gap-6 mb-8">
               <div class="flex items-center gap-4">
                 <div class="relative w-16 h-16">
                   <svg class="w-full h-full transform -rotate-90 drop-shadow-glow">
@@ -131,7 +132,7 @@
                 </div>
               </div>
 
-              <div class="flex items-center gap-4">
+              <div class="flex flex-wrap items-center gap-4">
                 <button class="w-10 h-10 bg-[#0D253F] rounded-full flex items-center justify-center hover:bg-[#01B4E4] transition-all duration-200 hover:scale-110">
                   <List class="w-5 h-5" />
                 </button>
@@ -182,7 +183,7 @@
 
 <script setup lang="ts">
 import { ref, onMounted } from 'vue'
-import { Search, Plus, List, Heart, Bookmark, Star, Play } from 'lucide-vue-next'
+import { Search, Plus, List, Heart, Bookmark, Star, Play, Menu } from 'lucide-vue-next'
 
 interface Movie {
   Title: string
